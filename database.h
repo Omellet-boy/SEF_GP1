@@ -1,0 +1,23 @@
+
+#ifndef DATABASE_H
+#define DATABASE_H
+
+#include <QObject>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QDateTime>
+
+class Database : public QObject {
+    Q_OBJECT
+
+public:
+    explicit Database(QObject *parent = nullptr);
+    bool init();
+    void logSolarData(double energy);
+    void logTemperature(double temp);
+
+private:
+    QSqlDatabase db;
+};
+
+#endif // DATABASE_H
