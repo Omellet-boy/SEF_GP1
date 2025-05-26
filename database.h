@@ -15,6 +15,7 @@ public:
     bool init();
     void logSolarData(double energy);
     void logTemperature(double temp);
+    bool checkLogin(const QString &username, const QString &password);
 
 private:
     QSqlDatabase db;

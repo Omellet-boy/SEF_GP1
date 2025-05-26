@@ -1,86 +1,147 @@
-
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include <QProgressBar>
-#include <QLCDNumber>
-#include <QVBoxLayout>
-#include <QLabel>
+#include <QtCharts/QCategoryAxis>
+#include <QTimer>
+#include <QTime>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow) {
-    ui->setupUi(this);
+    : QMainWindow(parent), simulator(new Simulator(this))
+{
+    centralWidget = new QWidget(this);
+    mainLayout = new QVBoxLayout(centralWidget);
 
-    QWidget *central = new QWidget(this);
-    QVBoxLayout *layout = new QVBoxLayout(central);
+    mainLayout->addWidget(createSolarPanelGroup());
+    mainLayout->addWidget(createBatteryGroup());
+    mainLayout->addWidget(createSimulationInfoGroup());
 
-    QLabel *solarLabel = new QLabel("Solar Energy (W):", this);
-    QLabel *batteryLabel = new QLabel("Battery %:", this);
-    QLabel *tempLabel = new QLabel("Temperature (°C):", this);
-    QLabel *degradationLabel = new QLabel("Battery Health (%):", this);
+    setupPowerChart();
+    mainLayout->addWidget(powerChartView);
 
-    QLCDNumber *solarDisplay = new QLCDNumber(this);
-    QProgressBar *batteryBar = new QProgressBar(this);
-    QLCDNumber *tempDisplay = new QLCDNumber(this);
-    QProgressBar *degBar = new QProgressBar(this);
+    setCentralWidget(centralWidget);
+    resize(800, 600);
+    setWindowTitle("Energy Simulator Dashboard");
 
-    QLabel *timeTitleLabel = new QLabel("Simulated Time:", this);
-    QLabel *timeLabel = new QLabel(this);
-    QLabel *weatherTitleLabel = new QLabel("Weather:", this);
-    QLabel *weatherLabel = new QLabel(this);
+    connect(simulator, &Simulator::dataUpdated, this, &MainWindow::updateDashboard);
+}
 
-    // Styling time and weather labels
-    timeLabel->setStyleSheet("font-weight: bold; font-size: 16px;");
-    weatherLabel->setStyleSheet("font-weight: bold; font-size: 16px;");
+MainWindow::~MainWindow() {}
 
-    layout->addWidget(solarLabel);
-    layout->addWidget(solarDisplay);
-    layout->addWidget(batteryLabel);
+void MainWindow::updateDashboard()
+{
+    double solar = simulator->solarEnergy();
+    double load = simulator->applianceLoad();
+    double net = solar - load;
+    double battery = simulator->batteryLevel();
+
+    solarPowerLabel->setText(QString("Solar Output: %1 W").arg(int(solar)));
+    loadLabel->setText(QString("Load: %1 W").arg(int(load)));
+    netLabel->setText(QString("Net: %1 W").arg(int(net)));
+
+    batteryBar->setValue(int(battery));
+    batteryPercentLabel->setText(QString("%1%").arg(int(battery)));
+
+    int hours = int(simulator->getSimulatedTime());
+    int minutes = int((simulator->getSimulatedTime() - hours) * 60);
+    QString timeStr = QString("%1:%2")
+                          .arg(hours, 2, 10, QChar('0'))
+                          .arg(minutes, 2, 10, QChar('0'));
+    timeLabel->setText(QString("Simulated Time: %1").arg(timeStr));
+    weatherLabel->setText(QString("Weather: %1").arg(simulator->getWeather()));
+
+    // Use simulated time in minutes as X value
+    double simTimeMinutes = simulator->getSimulatedTime() * 60.0;
+    powerSeries->append(simTimeMinutes, net);
+
+    // Remove old points beyond 24 hours (1440 minutes) window
+    while (!powerSeries->points().isEmpty() && powerSeries->points().first().x() < simTimeMinutes - 1440) {
+        powerSeries->removePoints(0, 1);
+    }
+}
+
+QGroupBox* MainWindow::createSolarPanelGroup()
+{
+    QGroupBox *group = new QGroupBox("Solar Panel");
+    QVBoxLayout *layout = new QVBoxLayout(group);
+
+    solarPowerLabel = new QLabel("Solar Output: ");
+    loadLabel = new QLabel("Load: ");
+    netLabel = new QLabel("Net: ");
+
+    layout->addWidget(solarPowerLabel);
+    layout->addWidget(loadLabel);
+    layout->addWidget(netLabel);
+
+    return group;
+}
+
+QGroupBox* MainWindow::createBatteryGroup()
+{
+    QGroupBox *group = new QGroupBox("Battery");
+    QVBoxLayout *layout = new QVBoxLayout(group);
+
+    batteryBar = new QProgressBar();
+    batteryBar->setRange(0, 100);
+    batteryBar->setValue(100);
+
+    batteryPercentLabel = new QLabel("100%");
+
     layout->addWidget(batteryBar);
-    layout->addWidget(tempLabel);
-    layout->addWidget(tempDisplay);
-    layout->addWidget(degradationLabel);
-    layout->addWidget(degBar);
-    layout->addWidget(timeTitleLabel);
+    layout->addWidget(batteryPercentLabel);
+
+    return group;
+}
+
+QGroupBox* MainWindow::createSimulationInfoGroup()
+{
+    QGroupBox *group = new QGroupBox("Simulation Info");
+    QVBoxLayout *layout = new QVBoxLayout(group);
+
+    timeLabel = new QLabel("Simulated Time: ");
+    weatherLabel = new QLabel("Weather: ");
+
     layout->addWidget(timeLabel);
-    layout->addWidget(weatherTitleLabel);
     layout->addWidget(weatherLabel);
 
-    setCentralWidget(central);
-
-    connect(&simulator, &Simulator::dataUpdated, this, [=]() {
-        solarDisplay->display(simulator.solarEnergy());
-        batteryBar->setValue(simulator.batteryLevel());
-        tempDisplay->display(simulator.temperature());
-        degBar->setValue(simulator.getDegradation());
-
-        // Format simulated time as HH:MM
-        double hour = simulator.getSimulatedTime();
-        int hh = static_cast<int>(hour);
-        int mm = static_cast<int>((hour - hh) * 60);
-        QString timeStr = QString("%1:%2")
-                              .arg(hh, 2, 10, QChar('0'))
-                              .arg(mm, 2, 10, QChar('0'));
-        timeLabel->setText(timeStr);
-
-        // Add weather icons
-        QString weather = simulator.getWeather();
-        QString icon;
-        if (weather == "Sunny") icon = "☀️";
-        else if (weather == "Cloudy") icon = "🌥️";
-        else if (weather == "Rainy") icon = "🌧️";
-        else if (weather == "Stormy") icon = "🌩️";
-        else if (weather == "Snowy") icon = "❄️";
-        else icon = "🌡️";
-
-        weatherLabel->setText(icon + " " + weather);
-    });
+    return group;
 }
 
+void MainWindow::setupPowerChart()
+{
+    powerSeries = new QLineSeries();
+    powerChart = new QChart();
+    powerChart->addSeries(powerSeries);
+    powerChart->legend()->hide();
+    powerChart->setTitle("Net Power Over Time");
 
-MainWindow::~MainWindow() {
-    delete ui;
-}
+    // Use QCategoryAxis for readable time labels
+    QCategoryAxis *axisX = new QCategoryAxis;
+    for (int hour = 0; hour <= 24; ++hour) {
+        int minutes = hour * 60;
+        axisX->append(QString("%1:00").arg(hour, 2, 10, QChar('0')), minutes);
+    }
+    axisX->setRange(0, 1440);
+    axisX->setTitleText("Simulated Time");
+    powerChart->addAxis(axisX, Qt::AlignBottom);
+    powerSeries->attachAxis(axisX);
 
-void MainWindow::updateUI() {
-    // Already handled in lambda
+    QValueAxis *axisY = new QValueAxis;
+    axisY->setTitleText("Net Power (W)");
+    axisY->setRange(-500, 1000);
+    axisY->setTickInterval(250);  // <- Force ticks every 250 units
+    axisY->setLabelFormat("%d");  // <- Makes labels integers
+    powerChart->addAxis(axisY, Qt::AlignLeft);
+    powerSeries->attachAxis(axisY);
+
+
+    // 🔽 Add zero line
+    QLineSeries *zeroLine = new QLineSeries();
+    zeroLine->append(0, 0);
+    zeroLine->append(1440, 0);
+    zeroLine->setColor(Qt::gray);
+    zeroLine->setPen(QPen(Qt::gray, 1, Qt::DashLine));
+    powerChart->addSeries(zeroLine);
+    zeroLine->attachAxis(axisX);
+    zeroLine->attachAxis(axisY);
+
+    powerChartView = new QChartView(powerChart);
+    powerChartView->setRenderHint(QPainter::Antialiasing);
 }

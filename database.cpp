@@ -17,8 +17,20 @@ bool Database::init() {
     QSqlQuery query;
     query.exec("CREATE TABLE IF NOT EXISTS SolarLog (timestamp TEXT, energy REAL)");
     query.exec("CREATE TABLE IF NOT EXISTS TempLog (timestamp TEXT, temperature REAL)");
+    query.exec("CREATE TABLE IF NOT EXISTS Users (username TEXT PRIMARY KEY, password TEXT)");
 
     return true;
+}
+
+bool Database::checkLogin(const QString &username, const QString &password) {
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM Users WHERE username = ? AND password = ?");
+    query.addBindValue(username);
+    query.addBindValue(password);
+    if (query.exec() && query.next()) {
+        return query.value(0).toInt() > 0;
+    }
+    return false;
 }
 
 void Database::logSolarData(double energy) {
@@ -36,3 +48,5 @@ void Database::logTemperature(double temp) {
     query.addBindValue(temp);
     query.exec();
 }
+
+

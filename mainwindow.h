@@ -1,28 +1,60 @@
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QChart>
+#include <QGroupBox>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QProgressBar>
 #include "simulator.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
-
-class MainWindow : public QMainWindow {
+class MainWindow : public QMainWindow
+{
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
-    void updateUI();
+    void updateDashboard();
 
 private:
-    Ui::MainWindow *ui;
-    Simulator simulator;
+    Simulator *simulator;
 
+    // UI Components
+    QWidget *centralWidget;
+    QVBoxLayout *mainLayout;
+
+    // Solar Panel Group
+    QGroupBox *createSolarPanelGroup();
+    QLabel *solarPowerLabel;
+    QLabel *loadLabel;
+    QLabel *netLabel;
+
+    // Battery Group
+    QGroupBox *createBatteryGroup();
+    QProgressBar *batteryBar;
+    QLabel *batteryPercentLabel;
+
+    // Simulation Info Group
+    QGroupBox *createSimulationInfoGroup();
+    QLabel *timeLabel;
+    QLabel *weatherLabel;
+
+    // Chart Components
+    QChartView *powerChartView;
+    QLineSeries *powerSeries;
+    QChart *powerChart;
+    int chartX;
+
+    void setupPowerChart();
+
+    QString currentDay;
+    void resetGraphForNewDay();
 };
 
 #endif // MAINWINDOW_H

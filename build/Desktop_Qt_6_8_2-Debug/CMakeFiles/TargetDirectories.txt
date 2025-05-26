@@ -1,0 +1,5 @@
+/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/SEMS.dir
+/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/edit_cache.dir
+/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/rebuild_cache.dir
+/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/SEMS_autogen_timestamp_deps.dir
+/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/SEMS_autogen.dir
