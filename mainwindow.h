@@ -1,3 +1,4 @@
+// mainwindow.h
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -9,6 +10,8 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QProgressBar>
+#include <QPushButton>
+#include <QStackedWidget>
 #include "simulator.h"
 
 class MainWindow : public QMainWindow
@@ -25,34 +28,42 @@ private slots:
 private:
     Simulator *simulator;
 
-    // UI Components
-    QWidget *centralWidget;
-    QVBoxLayout *mainLayout;
+    // Nav bar
+    QWidget *navWidget;
+    QVBoxLayout *navLayout;
+    QPushButton *dashboardButton;
+    QPushButton *settingsButton;
+    QPushButton *batteryMonitoringButton;
+    QPushButton *solarMonitoringButton;
+    QPushButton *dataManagementButton;
 
-    // Solar Panel Group
+    // Pages
+    QWidget *dashboardPage;
+    QStackedWidget *stackedWidget;
+
+    // Central widget
+    QWidget *centralWidget;
+
+    // Dashboard content
     QGroupBox *createSolarPanelGroup();
     QLabel *solarPowerLabel;
     QLabel *loadLabel;
     QLabel *netLabel;
 
-    // Battery Group
     QGroupBox *createBatteryGroup();
     QProgressBar *batteryBar;
     QLabel *batteryPercentLabel;
 
-    // Simulation Info Group
     QGroupBox *createSimulationInfoGroup();
     QLabel *timeLabel;
     QLabel *weatherLabel;
 
-    // Chart Components
     QChartView *powerChartView;
     QLineSeries *powerSeries;
     QChart *powerChart;
     int chartX;
 
     void setupPowerChart();
-
     QString currentDay;
     void resetGraphForNewDay();
 };

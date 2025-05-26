@@ -23,7 +23,7 @@ LoginWindow::LoginWindow(QWidget *parent)
     logoLabel->setPixmap(QPixmap(":/images/logo.png").scaled(64, 64, Qt::KeepAspectRatio));
     logoLabel->setAlignment(Qt::AlignCenter);
 
-    QLabel *title = new QLabel("Welcome to Energy Simulator");
+    QLabel *title = new QLabel("Welcome to Sorlar Energy Management System (SEMS)");
     title->setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 10px;");
     title->setAlignment(Qt::AlignCenter);
 

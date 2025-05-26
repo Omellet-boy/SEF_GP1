@@ -221,7 +221,10 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QLabel \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QMainWindow \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QProgressBar \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QPushButton \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QStackedWidget \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QVBoxLayout \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qabstractbutton.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qboxlayout.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qdialog.h \
@@ -238,8 +241,10 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlayoutitem.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qmainwindow.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qprogressbar.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qpushbutton.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qscrollarea.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qsizepolicy.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qstackedwidget.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qtabwidget.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qtwidgetsexports.h \
