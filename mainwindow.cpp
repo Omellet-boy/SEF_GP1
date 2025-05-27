@@ -4,7 +4,8 @@
     #include <QDebug>
     #include <QTimer>
     #include <QTime>
-#include "settingwindow.h"
+    #include "settingwindow.h"
+    #include "battery_monitoring_page.h"
 
     MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), simulator(new Simulator(this)), database(new Database(this))  // <-- Added database
@@ -62,7 +63,7 @@
 
         // Add dummy pages for now
         QWidget *settingPage = new SettingsWindow;
-        QWidget *batteryPage = new QLabel("Battery Monitoring Page");
+        BatteryMonitoringPage *batteryPage = new BatteryMonitoringPage(simulator);
         QWidget *solarPage = new QLabel("Solar Monitoring Page");
         QWidget *dataPage = new QLabel("Data Management Page");
 
