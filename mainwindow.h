@@ -13,6 +13,7 @@
 #include <QPushButton>
 #include <QStackedWidget>
 #include "simulator.h"
+#include "database.h"
 
 class MainWindow : public QMainWindow
 {
@@ -21,12 +22,16 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void setDatabase(Database *db);
 
 private slots:
     void updateDashboard();
 
 private:
     Simulator *simulator;
+
+    //database
+    Database *database = nullptr;
 
     // Nav bar
     QWidget *navWidget;

@@ -19,6 +19,8 @@ add_executable(SEMS
     database.h
     loginwindow.h
     loginwindow.cpp
+    settingwindow.h
+    settingwindow.cpp
 )
 
 target_link_libraries(SEMS PRIVATE Qt6::Core Qt6::Widgets Qt6::Sql Qt6::Charts)

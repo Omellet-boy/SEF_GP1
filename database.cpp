@@ -1,4 +1,3 @@
-
 #include "database.h"
 #include <QSqlError>
 #include <QDebug>
@@ -18,6 +17,15 @@ bool Database::init() {
     query.exec("CREATE TABLE IF NOT EXISTS SolarLog (timestamp TEXT, energy REAL)");
     query.exec("CREATE TABLE IF NOT EXISTS TempLog (timestamp TEXT, temperature REAL)");
     query.exec("CREATE TABLE IF NOT EXISTS Users (username TEXT PRIMARY KEY, password TEXT)");
+    query.exec("CREATE TABLE IF NOT EXISTS SimulationLog ("
+               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+               "sim_time_minutes REAL, "
+               "timestamp TEXT, "
+               "solar_output REAL, "
+               "load REAL, "
+               "net_power REAL, "
+               "battery_level REAL, "
+               "weather TEXT)");
 
     return true;
 }
@@ -49,4 +57,18 @@ void Database::logTemperature(double temp) {
     query.exec();
 }
 
-
+void Database::logSimulationData(double time, double solar, double load, double net, double battery, const QString &weather) {
+    QSqlQuery query;
+    query.prepare("INSERT INTO SimulationLog (sim_time_minutes, timestamp, solar_output, load, net_power, battery_level, weather) "
+                  "VALUES (?, ?, ?, ?, ?, ?, ?)");
+    query.addBindValue(time);
+    query.addBindValue(QDateTime::currentDateTime().toString(Qt::ISODate));
+    query.addBindValue(solar);
+    query.addBindValue(load);
+    query.addBindValue(net);
+    query.addBindValue(battery);
+    query.addBindValue(weather);
+    if (!query.exec()) {
+        qDebug() << "Failed to insert simulation log:" << query.lastError().text();
+    }
+}

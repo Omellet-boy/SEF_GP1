@@ -1,4 +1,3 @@
-
 #ifndef DATABASE_H
 #define DATABASE_H
 
@@ -16,6 +15,7 @@ public:
     void logSolarData(double energy);
     void logTemperature(double temp);
     bool checkLogin(const QString &username, const QString &password);
+    void logSimulationData(double time, double solar, double load, double net, double battery, const QString &weather);
 
 private:
     QSqlDatabase db;

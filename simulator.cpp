@@ -32,7 +32,7 @@ Simulator::Simulator(QObject *parent)
         emit dataUpdated();
     });
 
-    m_timer.start(5000); // update every 5 seconds
+    m_timer.start(1000); // update every 5 seconds
 }
 
 double Simulator::solarEnergy() {

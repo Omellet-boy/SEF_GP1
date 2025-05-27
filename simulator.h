@@ -18,7 +18,6 @@ public:
 
     double getSimulatedTime() const;     // Simulated hour (0–24)
     QString getWeather() const;          // Weather state
-    QString getDay() const;              // Returns current day name, e.g. "Monday"
 
 signals:
     void dataUpdated();
@@ -28,7 +27,6 @@ private:
     double m_degradation;
     double m_temperature;
     double m_simulatedTime;   // 0 to 24
-    int m_dayIndex;           // 0 = Monday, 1 = Tuesday, ..., 6 = Sunday
     QString m_weather;
     double m_rainDuration;
     double m_dryCooldown;
@@ -44,7 +42,6 @@ private:
     double computeApplienceLoad();
 
     double randomDouble(double min, double max) const;
-    void advanceDay();
     QString dayNameFromIndex(int index) const;
 };
 
