@@ -16,29 +16,31 @@ LoginWindow::LoginWindow(QWidget *parent)
     setFixedSize(750, 500);
 
     // Set background color
-    setStyleSheet("background-color: #964c40;");
+    setStyleSheet("background-color: #2B2C2E;");
 
     // Optional: Add logo
     QLabel *logoLabel = new QLabel();
-    logoLabel->setPixmap(QPixmap(":/images/logo.png").scaled(64, 64, Qt::KeepAspectRatio));
+    logoLabel->setPixmap(QPixmap(":home/overlord/SEMS/images/SUNKOK.png").scaled(64, 64, Qt::KeepAspectRatio));
     logoLabel->setAlignment(Qt::AlignCenter);
 
     QLabel *title = new QLabel("Welcome to Sorlar Energy Management System (SEMS)");
-    title->setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 10px;");
+    title->setStyleSheet("font-family: 'Kode Mono'; font-size: 18px; font-weight: bold; margin-bottom: 10px;");
     title->setAlignment(Qt::AlignCenter);
 
     usernameEdit = new QLineEdit();
     usernameEdit->setPlaceholderText("Username");
+    usernameEdit->setStyleSheet("padding: 8px; font-family: 'Kode Mono'; font-weight: bold; background-color: #3A3B3D; color: white; border-radius: 10px;");
 
     passwordEdit = new QLineEdit();
     passwordEdit->setPlaceholderText("Password");
     passwordEdit->setEchoMode(QLineEdit::Password);
+    passwordEdit->setStyleSheet("padding: 8px; font-family: 'Kode Mono'; font-weight: bold; background-color: #3A3B3D; color: white; border-radius: 10px;");
 
     loginButton = new QPushButton("Login");
-    loginButton->setStyleSheet("padding: 8px; font-weight: bold; background-color: #2c89f4; color: white; border-radius: 5px;");
+    loginButton->setStyleSheet("padding: 8px; font-family: 'Kode Mono'; font-weight: bold; background-color: #FED722; color: black; border-radius: 5px;");
 
     statusLabel = new QLabel();
-    statusLabel->setStyleSheet("color: red;");
+    statusLabel->setStyleSheet("color: Red;");
     statusLabel->setAlignment(Qt::AlignCenter);
 
     QVBoxLayout *layout = new QVBoxLayout();

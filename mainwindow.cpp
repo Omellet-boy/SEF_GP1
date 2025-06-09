@@ -163,6 +163,10 @@
     void MainWindow::setupPowerChart()
     {
         powerSeries = new QLineSeries();
+        QPen orangePen(QColor("#FFA500"));  // Orange
+        orangePen.setWidth(5);              // Optional: line thickness
+        powerSeries->setPen(orangePen);
+
         powerChart = new QChart();
         powerChart->addSeries(powerSeries);
         powerChart->legend()->hide();
