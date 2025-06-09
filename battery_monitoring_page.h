@@ -3,9 +3,10 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <QProgressBar>
 #include <QPushButton>
+#include <QProgressBar>
 #include <QVBoxLayout>
+#include <QGroupBox>
 #include "simulator.h"
 
 class BatteryMonitoringPage : public QWidget
@@ -20,16 +21,19 @@ private slots:
     void toggleSolarCharge();
 
 private:
-    Simulator* m_simulator;
+    QLabel* createInfoBox(const QString& title, const QString& value);
 
+    Simulator* m_simulator;
     QLabel* healthLabel;
     QLabel* temperatureLabel;
     QLabel* currentLabel;
     QLabel* chargeStatusLabel;
     QProgressBar* chargeProgressBar;
     QPushButton* stopChargeButton;
-
     bool solarChargeEnabled = true;
+
+    QGroupBox* createChargeControlGroup();
+
 };
 
 #endif // BATTERY_MONITORING_PAGE_H
