@@ -1,32 +1,7 @@
-/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/SEMS_autogen/EWIEGA46WW/moc_mainwindow.cpp: /home/overlord/SEMS/mainwindow.h \
+/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/SEMS_autogen/EWIEGA46WW/moc_battery_monitoring_page.cpp: /home/overlord/SEMS/battery_monitoring_page.h \
   /home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/SEMS_autogen/moc_predefs.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QAbstractAxis \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QAbstractSeries \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QChart \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QChartGlobal \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QChartView \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QLegend \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QLineSeries \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QXYSeries \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qabstractaxis.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qabstractseries.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qchart.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qchartglobal.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qchartview.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qlegend.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qlineseries.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qtcharts-config.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qtchartsexports.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qxyseries.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QDateTime \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QList \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QMargins \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QObject \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QRect \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QSize \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QSizeF \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QTimer \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QVariant \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/q20functional.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/q20iterator.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/q20memory.h \
@@ -47,7 +22,6 @@
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qbytearrayalgorithms.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qbytearraylist.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qbytearrayview.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qcalendar.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qchar.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qcompare.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qcompare_impl.h \
@@ -59,17 +33,10 @@
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qcontainerinfo.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qcontainertools_impl.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qcontiguouscache.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qcoreapplication.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qcoreapplication_platform.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qcoreevent.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qdarwinhelpers.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qdatastream.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qdatetime.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qdeadlinetimer.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qdebug.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qelapsedtimer.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qendian.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qeventloop.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qexceptionhandling.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qflags.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qfloat16.h \
@@ -88,18 +55,15 @@
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qlatin1stringview.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qline.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qlist.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qlocale.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qlogging.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qmalloc.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qmap.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qmargins.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qmath.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qmetacontainer.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qmetaobject.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qmetatype.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qminmax.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qnamespace.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qnativeinterface.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qnumeric.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qobject.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qobject_impl.h \
@@ -162,94 +126,53 @@
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qversiontagging.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qxptype_traits.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qyieldcpu.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/QBrush \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/QFont \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/QImage \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/QPen \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/QTransform \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qaction.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qbitmap.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qbrush.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qcolor.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qcursor.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qevent.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qeventpoint.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qfont.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qfontinfo.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qfontmetrics.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qguiapplication.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qguiapplication_platform.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qicon.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qimage.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qinputdevice.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qinputmethod.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qkeysequence.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpaintdevice.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpainter.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpainterpath.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpalette.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpen.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpicture.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpixelformat.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpixmap.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpointingdevice.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpolygon.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qregion.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qrgb.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qrgba64.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qscreen.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qscreen_platform.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextdocument.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextoption.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtgui-config.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtguiexports.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtguiglobal.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtransform.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qvector2d.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qvectornd.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qwindowdefs.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtSql/QSqlDatabase \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtSql/QSqlQuery \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtSql/qsqldatabase.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtSql/qsqlquery.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtSql/qtsql-config.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtSql/qtsqlexports.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtSql/qtsqlglobal.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QGraphicsView \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QGraphicsWidget \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QGroupBox \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QLabel \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QMainWindow \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QProgressBar \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QPushButton \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QStackedWidget \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QVBoxLayout \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QWidget \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qabstractbutton.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qboxlayout.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qframe.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qgraphicslayoutitem.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qgraphicsscene.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qgraphicsview.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qgraphicswidget.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qgridlayout.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qgroupbox.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlabel.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlayout.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlayoutitem.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qmainwindow.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qprogressbar.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qpushbutton.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qscrollarea.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qsizepolicy.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qstackedwidget.h \
-  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qtabwidget.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qtwidgets-config.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qtwidgetsexports.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qwidget.h \
-  /home/overlord/SEMS/database.h \
   /home/overlord/SEMS/simulator.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \

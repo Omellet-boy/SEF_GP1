@@ -22,6 +22,7 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QMargins \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QObject \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QRect \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QSettings \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QSize \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QSizeF \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QTimer \
@@ -113,6 +114,7 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qscopedpointer.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qscopeguard.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qset.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qsettings.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qshareddata.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qshareddata_impl.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qsharedpointer.h \
@@ -198,7 +200,9 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qrgba64.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qscreen.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qscreen_platform.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextcursor.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextdocument.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextformat.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextoption.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtgui-config.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtguiexports.h \
@@ -214,19 +218,23 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtSql/qtsql-config.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtSql/qtsqlexports.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtSql/qtsqlglobal.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QCheckBox \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QDialog \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QGraphicsView \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QGraphicsWidget \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QGroupBox \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QLabel \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QLineEdit \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QMainWindow \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QProgressBar \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QPushButton \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QStackedWidget \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QVBoxLayout \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QWidget \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qabstractbutton.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qboxlayout.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qcheckbox.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qdialog.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qframe.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qgraphicsitem.h \
@@ -239,6 +247,7 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlabel.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlayout.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlineedit.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qmainwindow.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qprogressbar.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qpushbutton.h \
@@ -569,6 +578,8 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/Tools/CMake/share/cmake-3.30/Modules/Platform/Linux.cmake \
 	/home/overlord/Qt/Tools/CMake/share/cmake-3.30/Modules/Platform/UnixPaths.cmake \
 	/home/overlord/SEMS/CMakeLists.txt \
+	/home/overlord/SEMS/battery_monitoring_page.cpp \
+	/home/overlord/SEMS/battery_monitoring_page.h \
 	/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/.qtc/package-manager/auto-setup.cmake \
 	/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake \
 	/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
@@ -581,6 +592,8 @@ SEMS_autogen/timestamp: \
 	/home/overlord/SEMS/main.cpp \
 	/home/overlord/SEMS/mainwindow.cpp \
 	/home/overlord/SEMS/mainwindow.h \
+	/home/overlord/SEMS/settingwindow.cpp \
+	/home/overlord/SEMS/settingwindow.h \
 	/home/overlord/SEMS/simulator.cpp \
 	/home/overlord/SEMS/simulator.h \
 	/usr/include/alloca.h \

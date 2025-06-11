@@ -97,6 +97,22 @@ build CMakeFiles/SEMS.dir/loginwindow.cpp.o: CXX_COMPILER__SEMS_unscanned_Debug 
   OBJECT_DIR = CMakeFiles/SEMS.dir
   OBJECT_FILE_DIR = CMakeFiles/SEMS.dir
 
+build CMakeFiles/SEMS.dir/settingwindow.cpp.o: CXX_COMPILER__SEMS_unscanned_Debug /home/overlord/SEMS/settingwindow.cpp || cmake_object_order_depends_target_SEMS
+  DEFINES = -DQT_CHARTS_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SQL_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/SEMS.dir/settingwindow.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always -fPIC
+  INCLUDES = -I/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/SEMS_autogen/include -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtCore -isystem /home/overlord/Qt/6.8.2/gcc_64/include -isystem /home/overlord/Qt/6.8.2/gcc_64/mkspecs/linux-g++ -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtGui -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtSql -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtOpenGL -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtOpenGLWidgets
+  OBJECT_DIR = CMakeFiles/SEMS.dir
+  OBJECT_FILE_DIR = CMakeFiles/SEMS.dir
+
+build CMakeFiles/SEMS.dir/battery_monitoring_page.cpp.o: CXX_COMPILER__SEMS_unscanned_Debug /home/overlord/SEMS/battery_monitoring_page.cpp || cmake_object_order_depends_target_SEMS
+  DEFINES = -DQT_CHARTS_LIB -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_SQL_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/SEMS.dir/battery_monitoring_page.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always -fPIC
+  INCLUDES = -I/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/SEMS_autogen/include -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtCore -isystem /home/overlord/Qt/6.8.2/gcc_64/include -isystem /home/overlord/Qt/6.8.2/gcc_64/mkspecs/linux-g++ -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtGui -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtSql -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtCharts -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtOpenGL -isystem /home/overlord/Qt/6.8.2/gcc_64/include/QtOpenGLWidgets
+  OBJECT_DIR = CMakeFiles/SEMS.dir
+  OBJECT_FILE_DIR = CMakeFiles/SEMS.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target SEMS
@@ -105,7 +121,7 @@ build CMakeFiles/SEMS.dir/loginwindow.cpp.o: CXX_COMPILER__SEMS_unscanned_Debug 
 #############################################
 # Link the executable SEMS
 
-build SEMS: CXX_EXECUTABLE_LINKER__SEMS_Debug CMakeFiles/SEMS.dir/SEMS_autogen/mocs_compilation.cpp.o CMakeFiles/SEMS.dir/main.cpp.o CMakeFiles/SEMS.dir/mainwindow.cpp.o CMakeFiles/SEMS.dir/simulator.cpp.o CMakeFiles/SEMS.dir/database.cpp.o CMakeFiles/SEMS.dir/loginwindow.cpp.o | /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Sql.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Charts.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6OpenGLWidgets.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Widgets.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6OpenGL.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Gui.so.6.8.2 /usr/lib64/libGLX.so /usr/lib64/libOpenGL.so /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Core.so.6.8.2 || SEMS_autogen SEMS_autogen_timestamp_deps
+build SEMS: CXX_EXECUTABLE_LINKER__SEMS_Debug CMakeFiles/SEMS.dir/SEMS_autogen/mocs_compilation.cpp.o CMakeFiles/SEMS.dir/main.cpp.o CMakeFiles/SEMS.dir/mainwindow.cpp.o CMakeFiles/SEMS.dir/simulator.cpp.o CMakeFiles/SEMS.dir/database.cpp.o CMakeFiles/SEMS.dir/loginwindow.cpp.o CMakeFiles/SEMS.dir/settingwindow.cpp.o CMakeFiles/SEMS.dir/battery_monitoring_page.cpp.o | /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Sql.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Charts.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6OpenGLWidgets.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Widgets.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6OpenGL.so.6.8.2 /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Gui.so.6.8.2 /usr/lib64/libGLX.so /usr/lib64/libOpenGL.so /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Core.so.6.8.2 || SEMS_autogen SEMS_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = -Wl,-rpath,/home/overlord/Qt/6.8.2/gcc_64/lib  /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Sql.so.6.8.2  /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Charts.so.6.8.2  /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6OpenGLWidgets.so.6.8.2  /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Widgets.so.6.8.2  /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6OpenGL.so.6.8.2  /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Gui.so.6.8.2  /usr/lib64/libGLX.so  /usr/lib64/libOpenGL.so  /home/overlord/Qt/6.8.2/gcc_64/lib/libQt6Core.so.6.8.2  -Wl,-rpath-link,/home/overlord/Qt/6.8.2/gcc_64/lib
   OBJECT_DIR = CMakeFiles/SEMS.dir

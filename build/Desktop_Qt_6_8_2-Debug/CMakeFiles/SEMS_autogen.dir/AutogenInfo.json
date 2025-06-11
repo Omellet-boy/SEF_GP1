@@ -487,6 +487,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/overlord/SEMS/battery_monitoring_page.h",
+			"MU",
+			"EWIEGA46WW/moc_battery_monitoring_page.cpp",
+			null
+		],
+		[
 			"/home/overlord/SEMS/database.h",
 			"MU",
 			"EWIEGA46WW/moc_database.cpp",
@@ -502,6 +508,12 @@
 			"/home/overlord/SEMS/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
+			null
+		],
+		[
+			"/home/overlord/SEMS/settingwindow.h",
+			"MU",
+			"EWIEGA46WW/moc_settingwindow.cpp",
 			null
 		],
 		[
@@ -582,10 +594,12 @@
 	"SETTINGS_FILE" : "/home/overlord/SEMS/build/Desktop_Qt_6_8_2-Debug/CMakeFiles/SEMS_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/overlord/SEMS/battery_monitoring_page.cpp", "MU", null ],
 		[ "/home/overlord/SEMS/database.cpp", "MU", null ],
 		[ "/home/overlord/SEMS/loginwindow.cpp", "MU", null ],
 		[ "/home/overlord/SEMS/main.cpp", "MU", null ],
 		[ "/home/overlord/SEMS/mainwindow.cpp", "MU", null ],
+		[ "/home/overlord/SEMS/settingwindow.cpp", "MU", null ],
 		[ "/home/overlord/SEMS/simulator.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],

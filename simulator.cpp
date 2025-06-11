@@ -1,24 +1,33 @@
 #include "simulator.h"
 #include <QRandomGenerator>
-#include <cmath>  // for std::sin, std::max
+#include <QProcess>
+#include <QSettings>
+#include "database.h"
+#include <cmath>
 
 Simulator::Simulator(QObject *parent)
     : QObject(parent),
     m_batteryLevel(75.0),
     m_degradation(100.0),
     m_temperature(25.0),
-    m_simulatedTime(6.0), // Start at 6 AM
+    m_simulatedTime(24.0),
     m_weather("Clear"),
     m_rainDuration(0.0),
-    m_dryCooldown(0.0)
+    m_dryCooldown(0.0),
+    m_sunDuration(0.0),
+    m_solarChargingEnabled(true),
+    m_emailSentOverheat(false),
+    m_emailSentDegrade(false)
 {
     connect(&m_timer, &QTimer::timeout, this, [=]() {
         updateSimulatedTime();
         updateWeather();
 
         double solar = computeSolarOutput();
-        double load = applianceLoad();
+        if (!m_solarChargingEnabled)
+            solar = 0.0;
 
+        double load = applianceLoad();
         double netEnergy = solar - load;
         m_batteryLevel += netEnergy * 0.0001;
 
@@ -30,9 +39,47 @@ Simulator::Simulator(QObject *parent)
 
         updateDegradation();
         emit dataUpdated();
+
+        // ===== Email Notification Logic =====
+
+        QSettings settings("MyCompany", "SEMS");
+
+        if (settings.value("emailNotifications", false).toBool()) {
+            QString user = settings.value("currentUsername", "admin").toString();
+            QString email = Database().getEmail(user);
+
+            if (!email.isEmpty()) {
+                // Overheat Alert
+                if (m_temperature > 45.0 && !m_emailSentOverheat) {
+                    sendEmailNotification(email, "Overheating Alert",
+                                          QString("Battery temperature has exceeded 45°C (current: %1°C)").arg(m_temperature));
+                    m_emailSentOverheat = true;
+                } else if (m_temperature < 40.0) {
+                    m_emailSentOverheat = false;
+                }
+
+                // Degradation Alert
+                if (m_degradation < 30.0 && !m_emailSentDegrade) {
+                    sendEmailNotification(email, "Battery Health Alert",
+                                          QString("Battery degradation dropped below 30%% (current: %1%%)").arg(m_degradation));
+                    m_emailSentDegrade = true;
+                } else if (m_degradation > 35.0) {
+                    m_emailSentDegrade = false;
+                }
+            }
+        }
+
     });
 
-    m_timer.start(1000); // update every 5 seconds
+    m_timer.start(5000); // update every 5 seconds
+}
+
+void Simulator::sendEmailNotification(const QString &to, const QString &subject, const QString &message) {
+    QProcess *process = new QProcess(this);
+    QString script = "python3";
+    QStringList args;
+    args << "email_alert.py" << to << subject << message;
+    process->startDetached(script, args);
 }
 
 double Simulator::solarEnergy() {
@@ -46,28 +93,18 @@ double Simulator::batteryLevel() {
 double Simulator::applianceLoad() {
     double hour = m_simulatedTime;
 
-    // Very low base load at night (midnight to 6 AM)
     if (hour < 6.0) {
         return randomDouble(20.0, 50.0);
-    }
-    // Morning (6 AM to 9 AM) gentle increase
-    else if (hour < 9.0) {
+    } else if (hour < 9.0) {
         return 50.0 + (hour - 6.0) * 30.0 + randomDouble(-10.0, 10.0);
-    }
-    // Daytime (9 AM to 17 PM) moderate steady load
-    else if (hour < 17.0) {
+    } else if (hour < 17.0) {
         return 150.0 + randomDouble(-20.0, 20.0);
-    }
-    // Evening peak (17 PM to 22 PM)
-    else if (hour < 22.0) {
+    } else if (hour < 22.0) {
         return 300.0 + (hour - 17.0) * 40.0 + randomDouble(-20.0, 20.0);
-    }
-    // Late night (22 PM to midnight) winding down
-    else {
+    } else {
         return 100.0 + (24.0 - hour) * 30.0 + randomDouble(-10.0, 10.0);
     }
 }
-
 
 void Simulator::updateDegradation() {
     m_degradation -= randomDouble(0.001, 0.01);
@@ -78,12 +115,16 @@ double Simulator::getDegradation() const {
     return m_degradation;
 }
 
+double Simulator::getTemperature() const {
+    return m_temperature;
+}
+
 double Simulator::randomDouble(double min, double max) const {
     return min + QRandomGenerator::global()->generateDouble() * (max - min);
 }
 
 void Simulator::updateSimulatedTime() {
-    m_simulatedTime += 0.1667; // Each tick = 15 minutes
+    m_simulatedTime += 0.1667; // 15 minutes per tick
     if (m_simulatedTime >= 24.0)
         m_simulatedTime = 0.0;
 }
@@ -107,30 +148,27 @@ void Simulator::updateWeather() {
     }
 
     double hour = m_simulatedTime;
-
-    // Set rain chance based on time windows
     double rainChance = 0.0;
+
     if (hour >= 6.0 && hour < 11.0) {
-        rainChance = 0.2;  // Moderate rain chance morning
+        rainChance = 0.2;
     } else if (hour >= 11.0 && hour < 17.0) {
-        rainChance = 0.05; // Low rain chance midday
+        rainChance = 0.05;
     } else if (hour >= 17.0 && hour < 22.0) {
-        rainChance = 0.3;  // Moderate rain chance evening
+        rainChance = 0.3;
     } else if ((hour >= 0.0 && hour < 3.0)) {
-        rainChance = 0.6;  // High rain chance at night
+        rainChance = 0.6;
     } else {
-        rainChance = 0.1;  // Low chance other times
+        rainChance = 0.1;
     }
 
-    // Allow sunny only from 12 to 17 (noon to 5pm)
     bool canBeSunny = (hour >= 12.0 && hour <= 17.0);
-
     double roll = randomDouble(0.0, 1.0);
 
     if (roll < rainChance) {
         m_weather = "Rainy";
         m_rainDuration = randomDouble(30.0, 120.0);
-    } else if (canBeSunny && roll < rainChance + 0.15) { // 15% sunny chance during allowed time
+    } else if (canBeSunny && roll < rainChance + 0.15) {
         m_weather = "Sunny";
         m_sunDuration = randomDouble(60.0, 120.0);
     } else if (roll < 0.85) {
@@ -140,27 +178,20 @@ void Simulator::updateWeather() {
     }
 }
 
-
 double Simulator::computeSolarOutput() {
     double hour = m_simulatedTime;
 
     if (hour < 6.0 || hour > 19.0)
-        return 0.0; // Night
+        return 0.0;
 
-    double peakPower = 1000.0; // Max solar panel output in watts
-
-    // Normalized hour between 0 and 1 for day time
+    double peakPower = 1000.0;
     double normalized = (hour - 6.0) / (19.0 - 6.0);
-
-    // Parabolic solar irradiance curve peaking at noon
     double solarPower = peakPower * 4 * normalized * (1 - normalized);
 
-    // Weather impact
     if (m_weather == "Cloudy") solarPower *= 0.6;
     else if (m_weather == "Rainy") solarPower *= 0.2;
     else if (m_weather == "Sunny") solarPower *= 1.2;
 
-    // Add small noise +/- 50 W
     solarPower += randomDouble(-50.0, 50.0);
     if (solarPower < 0) solarPower = 0;
 
@@ -173,4 +204,12 @@ double Simulator::getSimulatedTime() const {
 
 QString Simulator::getWeather() const {
     return m_weather;
+}
+
+void Simulator::setSolarChargingEnabled(bool enabled) {
+    m_solarChargingEnabled = enabled;
+}
+
+bool Simulator::isSolarChargingEnabled() const {
+    return m_solarChargingEnabled;
 }

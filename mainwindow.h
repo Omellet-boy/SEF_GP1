@@ -50,6 +50,17 @@ private:
     QWidget *centralWidget;
 
     // Dashboard content
+
+    QWidget* createModernDashboardPage();
+    // Modern dashboard widgets
+    QProgressBar *modernBatteryBar;
+    QLabel *modernBatteryLabel;
+    QLabel *modernDegradationLabel;
+    QLabel *modernTempLabel;
+    QLabel *modernSolarLabel;
+    QChartView *modernBarChartView;
+
+
     QGroupBox *createSolarPanelGroup();
     QLabel *solarPowerLabel;
     QLabel *loadLabel;

@@ -4,7 +4,8 @@
 #include <QObject>
 #include <QTimer>
 
-class Simulator : public QObject {
+class Simulator : public QObject
+{
     Q_OBJECT
 
 public:
@@ -12,12 +13,17 @@ public:
 
     double solarEnergy();
     double batteryLevel();
-    double temperature();
     double applianceLoad();
     double getDegradation() const;
+    double getSimulatedTime() const;
+    QString getWeather() const;
+    double getTemperature() const;
 
-    double getSimulatedTime() const;     // Simulated hour (0–24)
-    QString getWeather() const;          // Weather state
+
+    void setSolarChargingEnabled(bool enabled);
+    bool isSolarChargingEnabled() const;
+
+    double m_temperature; // Made public for UI access (or use getter if preferred)
 
 signals:
     void dataUpdated();
@@ -25,24 +31,28 @@ signals:
 private:
     double m_batteryLevel;
     double m_degradation;
-    double m_temperature;
-    double m_simulatedTime;   // 0 to 24
+    double m_simulatedTime;
     QString m_weather;
     double m_rainDuration;
     double m_dryCooldown;
     double m_sunDuration;
-    double m_sunCooldown;
+    bool m_solarChargingEnabled;
 
     QTimer m_timer;
 
-    void updateDegradation();
     void updateSimulatedTime();
     void updateWeather();
-    double computeSolarOutput();  // Based on time + weather
-    double computeApplienceLoad();
-
+    void updateDegradation();
+    double computeSolarOutput();
     double randomDouble(double min, double max) const;
-    QString dayNameFromIndex(int index) const;
+
+    // simulator.h
+    bool m_emailSentOverheat = false;
+    bool m_emailSentDegrade = false;
+
+    void sendEmailNotification(const QString &to, const QString &subject, const QString &message);
+
+
 };
 
 #endif // SIMULATOR_H
