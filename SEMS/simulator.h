@@ -45,6 +45,14 @@ private:
     void updateDegradation();
     double computeSolarOutput();
     double randomDouble(double min, double max) const;
+
+    // simulator.h
+    bool m_emailSentOverheat = false;
+    bool m_emailSentDegrade = false;
+
+    void sendEmailNotification(const QString &to, const QString &subject, const QString &message);
+
+
 };
 
 #endif // SIMULATOR_H

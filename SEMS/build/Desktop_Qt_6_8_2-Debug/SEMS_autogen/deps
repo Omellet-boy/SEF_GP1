@@ -200,7 +200,9 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qrgba64.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qscreen.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qscreen_platform.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextcursor.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextdocument.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextformat.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextoption.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtgui-config.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtguiexports.h \
@@ -222,6 +224,7 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QGraphicsWidget \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QGroupBox \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QLabel \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QLineEdit \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QMainWindow \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QProgressBar \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QPushButton \
@@ -244,6 +247,7 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlabel.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlayout.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlineedit.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qmainwindow.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qprogressbar.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qpushbutton.h \

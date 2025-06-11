@@ -1,5 +1,6 @@
 #include "database.h"
 #include <QSqlError>
+#include <QSqlRecord>
 #include <QDebug>
 
 Database::Database(QObject *parent) : QObject(parent) {}
@@ -18,9 +19,11 @@ bool Database::init() {
     }
 
     QSqlQuery query;
+
+    // Ensure required tables exist
     query.exec("CREATE TABLE IF NOT EXISTS SolarLog (timestamp TEXT, energy REAL)");
     query.exec("CREATE TABLE IF NOT EXISTS TempLog (timestamp TEXT, temperature REAL)");
-    query.exec("CREATE TABLE IF NOT EXISTS Users (username TEXT PRIMARY KEY, password TEXT)");
+    query.exec("CREATE TABLE IF NOT EXISTS Users (username TEXT PRIMARY KEY, password TEXT, email TEXT)");
     query.exec("CREATE TABLE IF NOT EXISTS SimulationLog ("
                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                "sim_time_minutes REAL, "
@@ -31,9 +34,21 @@ bool Database::init() {
                "battery_level REAL, "
                "weather TEXT)");
 
+    // Alter Users table to add 'email' column if it doesn't exist
+    query.exec("PRAGMA table_info(Users)");
+    bool emailExists = false;
+    while (query.next()) {
+        if (query.value(1).toString() == "email") {
+            emailExists = true;
+            break;
+        }
+    }
+    if (!emailExists) {
+        query.exec("ALTER TABLE Users ADD COLUMN email TEXT");
+    }
+
     return true;
 }
-
 
 bool Database::checkLogin(const QString &username, const QString &password) {
     QSqlQuery query;
@@ -44,6 +59,28 @@ bool Database::checkLogin(const QString &username, const QString &password) {
         return query.value(0).toInt() > 0;
     }
     return false;
+}
+
+QString Database::getEmail(const QString &username) {
+    QSqlQuery query;
+    query.prepare("SELECT email FROM Users WHERE username = ?");
+    query.addBindValue(username);
+    if (query.exec() && query.next()) {
+        return query.value(0).toString();
+    }
+    return "";
+}
+
+bool Database::updateEmail(const QString &username, const QString &email) {
+    QSqlQuery query;
+    query.prepare("UPDATE Users SET email = ? WHERE username = ?");
+    query.addBindValue(email);
+    query.addBindValue(username);
+    if (!query.exec()) {
+        qDebug() << "Failed to update email:" << query.lastError().text();
+        return false;
+    }
+    return true;
 }
 
 void Database::logSolarData(double energy) {

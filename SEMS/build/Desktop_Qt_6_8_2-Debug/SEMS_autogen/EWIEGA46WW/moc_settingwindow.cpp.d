@@ -116,6 +116,7 @@
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qtversionchecks.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qtypeinfo.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qtypes.h \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qurl.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qutf8stringview.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qvariant.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtCore/qvarlengtharray.h \
@@ -135,22 +136,30 @@
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qkeysequence.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpaintdevice.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpalette.h \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpen.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpixelformat.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpixmap.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qpolygon.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qregion.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qrgb.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qrgba64.h \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextcursor.h \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextdocument.h \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextformat.h \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtextoption.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtgui-config.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtguiexports.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtguiglobal.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qtransform.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtGui/qwindowdefs.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QCheckBox \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QLineEdit \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QPushButton \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/QWidget \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qabstractbutton.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qcheckbox.h \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qframe.h \
+  /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qlineedit.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qpushbutton.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qsizepolicy.h \
   /home/overlord/Qt/6.8.2/gcc_64/include/QtWidgets/qtwidgets-config.h \

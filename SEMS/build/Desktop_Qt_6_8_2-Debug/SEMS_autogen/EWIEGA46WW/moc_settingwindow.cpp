@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../../settingwindow.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -38,8 +39,9 @@ struct qt_meta_tag_ZN14SettingsWindowE_t {};
 #ifdef QT_MOC_HAS_STRINGDATA
 static constexpr auto qt_meta_stringdata_ZN14SettingsWindowE = QtMocHelpers::stringData(
     "SettingsWindow",
-    "backToDashboard",
-    ""
+    "applySettings",
+    "",
+    "changeCredentials"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -51,17 +53,19 @@ Q_CONSTINIT static const uint qt_meta_data_ZN14SettingsWindowE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       0,       // signalCount
 
- // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x06,    1 /* Public */,
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    0,   26,    2, 0x08,    1 /* Private */,
+       3,    0,   27,    2, 0x08,    2 /* Private */,
 
- // signals: parameters
+ // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -76,7 +80,9 @@ Q_CONSTINIT const QMetaObject SettingsWindow::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_tag_ZN14SettingsWindowE_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<SettingsWindow, std::true_type>,
-        // method 'backToDashboard'
+        // method 'applySettings'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'changeCredentials'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -87,20 +93,12 @@ void SettingsWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     auto *_t = static_cast<SettingsWindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->backToDashboard(); break;
+        case 0: _t->applySettings(); break;
+        case 1: _t->changeCredentials(); break;
         default: ;
         }
     }
-    if (_c == QMetaObject::IndexOfMethod) {
-        int *result = reinterpret_cast<int *>(_a[0]);
-        {
-            using _q_method_type = void (SettingsWindow::*)();
-            if (_q_method_type _q_method = &SettingsWindow::backToDashboard; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
-                *result = 0;
-                return;
-            }
-        }
-    }
+    (void)_a;
 }
 
 const QMetaObject *SettingsWindow::metaObject() const
@@ -122,21 +120,15 @@ int SettingsWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
-}
-
-// SIGNAL 0
-void SettingsWindow::backToDashboard()
-{
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP

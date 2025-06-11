@@ -20,10 +20,15 @@ LoginWindow::LoginWindow(QWidget *parent)
 
     // Optional: Add logo
     QLabel *logoLabel = new QLabel();
-    logoLabel->setPixmap(QPixmap(":home/overlord/SEMS/images/SUNKOK.png").scaled(64, 64, Qt::KeepAspectRatio));
+    QPixmap logoPixmap("/home/overlord/SEMS/images/SUNKOK.png");
+    if (logoPixmap.isNull()) {
+        qDebug() << "❌ Failed to load logo image!";
+    }
+    logoLabel->setPixmap(logoPixmap.scaled(64, 64, Qt::KeepAspectRatio));
+
     logoLabel->setAlignment(Qt::AlignCenter);
 
-    QLabel *title = new QLabel("Welcome to Sorlar Energy Management System (SEMS)");
+    QLabel *title = new QLabel("Welcome to Solar Energy Management System (SEMS)");
     title->setStyleSheet("font-family: 'Kode Mono'; font-size: 18px; font-weight: bold; margin-bottom: 10px;");
     title->setAlignment(Qt::AlignCenter);
 

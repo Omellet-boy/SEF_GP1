@@ -1,6 +1,9 @@
 #include "simulator.h"
 #include <QRandomGenerator>
-#include <cmath>  // for std::sin, std::max
+#include <QProcess>
+#include <QSettings>
+#include "database.h"
+#include <cmath>
 
 Simulator::Simulator(QObject *parent)
     : QObject(parent),
@@ -12,7 +15,9 @@ Simulator::Simulator(QObject *parent)
     m_rainDuration(0.0),
     m_dryCooldown(0.0),
     m_sunDuration(0.0),
-    m_solarChargingEnabled(true)
+    m_solarChargingEnabled(true),
+    m_emailSentOverheat(false),
+    m_emailSentDegrade(false)
 {
     connect(&m_timer, &QTimer::timeout, this, [=]() {
         updateSimulatedTime();
@@ -34,9 +39,47 @@ Simulator::Simulator(QObject *parent)
 
         updateDegradation();
         emit dataUpdated();
+
+        // ===== Email Notification Logic =====
+
+        QSettings settings("MyCompany", "SEMS");
+
+        if (settings.value("emailNotifications", false).toBool()) {
+            QString user = settings.value("currentUsername", "admin").toString();
+            QString email = Database().getEmail(user);
+
+            if (!email.isEmpty()) {
+                // Overheat Alert
+                if (m_temperature > 45.0 && !m_emailSentOverheat) {
+                    sendEmailNotification(email, "Overheating Alert",
+                                          QString("Battery temperature has exceeded 45°C (current: %1°C)").arg(m_temperature));
+                    m_emailSentOverheat = true;
+                } else if (m_temperature < 40.0) {
+                    m_emailSentOverheat = false;
+                }
+
+                // Degradation Alert
+                if (m_degradation < 30.0 && !m_emailSentDegrade) {
+                    sendEmailNotification(email, "Battery Health Alert",
+                                          QString("Battery degradation dropped below 30%% (current: %1%%)").arg(m_degradation));
+                    m_emailSentDegrade = true;
+                } else if (m_degradation > 35.0) {
+                    m_emailSentDegrade = false;
+                }
+            }
+        }
+
     });
 
-    m_timer.start(5000); // update every second
+    m_timer.start(5000); // update every 5 seconds
+}
+
+void Simulator::sendEmailNotification(const QString &to, const QString &subject, const QString &message) {
+    QProcess *process = new QProcess(this);
+    QString script = "python3";
+    QStringList args;
+    args << "email_alert.py" << to << subject << message;
+    process->startDetached(script, args);
 }
 
 double Simulator::solarEnergy() {
