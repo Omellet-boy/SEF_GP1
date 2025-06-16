@@ -24,6 +24,8 @@ add_executable(SEMS
     battery_monitoring_page.h
     battery_monitoring_page.cpp
     email_alert.py
+    solar_monitoring_page.h
+    solar_monitoring_page.cpp
 )
 
 target_link_libraries(SEMS PRIVATE Qt6::Core Qt6::Widgets Qt6::Sql Qt6::Charts)

@@ -10,7 +10,7 @@ Simulator::Simulator(QObject *parent)
     m_batteryLevel(75.0),
     m_degradation(100.0),
     m_temperature(25.0),
-    m_simulatedTime(24.0),
+    m_simulatedTime(10.0),
     m_weather("Clear"),
     m_rainDuration(0.0),
     m_dryCooldown(0.0),

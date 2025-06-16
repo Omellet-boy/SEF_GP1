@@ -6,6 +6,7 @@
 #include <QTime>
 #include "settingwindow.h"
 #include "battery_monitoring_page.h"
+#include "solar_monitoring_page.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), simulator(new Simulator(this)), database(new Database(this))
@@ -23,13 +24,11 @@ MainWindow::MainWindow(QWidget *parent)
     settingsButton = new QPushButton("Settings");
     batteryMonitoringButton = new QPushButton("Battery Monitoring");
     solarMonitoringButton = new QPushButton("Solar Monitoring");
-    dataManagementButton = new QPushButton("Data Management");
 
     navLayout->addWidget(dashboardButton);
     navLayout->addWidget(settingsButton);
     navLayout->addWidget(batteryMonitoringButton);
     navLayout->addWidget(solarMonitoringButton);
-    navLayout->addWidget(dataManagementButton);
     navLayout->addStretch();
     navWidget->setFixedWidth(150);
 
@@ -45,9 +44,6 @@ MainWindow::MainWindow(QWidget *parent)
     });
     connect(solarMonitoringButton, &QPushButton::clicked, [this]() {
         stackedWidget->setCurrentIndex(3);
-    });
-    connect(dataManagementButton, &QPushButton::clicked, [this]() {
-        stackedWidget->setCurrentIndex(4);
     });
 
     // Pages container
@@ -65,14 +61,14 @@ MainWindow::MainWindow(QWidget *parent)
     // Dummy Pages
     QWidget *settingPage = new SettingsWindow;
     BatteryMonitoringPage *batteryPage = new BatteryMonitoringPage(simulator);
-    QWidget *solarPage = new QLabel("Solar Monitoring Page");
-    QWidget *dataPage = new QLabel("Data Management Page");
+    SolarMonitoringPage *solarPage = new SolarMonitoringPage(simulator);
+    //QWidget *dataPage = new QLabel("Data Management Page");
 
     stackedWidget->addWidget(dashboardPage);
     stackedWidget->addWidget(settingPage);
     stackedWidget->addWidget(batteryPage);
     stackedWidget->addWidget(solarPage);
-    stackedWidget->addWidget(dataPage);
+    //stackedWidget->addWidget(dataPage);
 
     mainLayout->addWidget(navWidget);
     mainLayout->addWidget(stackedWidget);
@@ -180,7 +176,7 @@ QGroupBox* MainWindow::createBatteryGroup()
             color: white;
         }
         QProgressBar::chunk {
-            background-color: #FFD700;
+            background-color: #FFA500;
             border-radius: 8px;
         }
     )");
@@ -223,42 +219,49 @@ QGroupBox* MainWindow::createSimulationInfoGroup()
 void MainWindow::setupPowerChart()
 {
     powerSeries = new QLineSeries();
-    QPen orangePen(QColor("#FFA500"));
-    orangePen.setWidth(5);
+    QPen orangePen(QColor("#FFA500"));  // Same orange color as solar chart
+    orangePen.setWidth(2);  // Matches solar chart line width
     powerSeries->setPen(orangePen);
 
     powerChart = new QChart();
     powerChart->addSeries(powerSeries);
     powerChart->legend()->hide();
     powerChart->setTitle("Net Power Over Time");
+    powerChart->setBackgroundBrush(QBrush(QColor("#1E1E1E")));  // Dark background
+    powerChart->setTitleBrush(QBrush(QColor("#FFD700")));  // Gold title text
 
-    QCategoryAxis *axisX = new QCategoryAxis;
-    for (int hour = 0; hour <= 24; ++hour) {
-        int minutes = hour * 60;
-        axisX->append(QString("%1:00").arg(hour, 2, 10, QChar('0')), minutes);
+    // X Axis (Time) - Keep your original hourly labels
+    QCategoryAxis *axisX = new QCategoryAxis();
+    axisX->setTitleText("Time (hours)");
+    axisX->setLabelsColor(QColor("#FFD700"));  // Gold labels
+    axisX->setTitleBrush(QBrush(QColor("#FFD700")));  // Gold title
+    for (int hour = 0; hour <= 24; ++hour) {  // Keep original hourly labels
+        axisX->append(QString("%1:00").arg(hour, 2, 10, QChar('0')), hour * 60);
     }
     axisX->setRange(0, 1440);
-    axisX->setTitleText("Simulated Time");
     powerChart->addAxis(axisX, Qt::AlignBottom);
     powerSeries->attachAxis(axisX);
 
-    QValueAxis *axisY = new QValueAxis;
-    axisY->setTitleText("Net Power (W)");
-    axisY->setRange(-500, 1000);
-    axisY->setTickInterval(250);
-    axisY->setLabelFormat("%d");
+    // Y Axis (Power) - Styled like solar chart
+    QValueAxis *axisY = new QValueAxis();
+    axisY->setTitleText("Power (W)");
+    axisY->setLabelsColor(QColor("#FFD700"));  // Gold labels
+    axisY->setTitleBrush(QBrush(QColor("#FFD700")));  // Gold title
+    axisY->setRange(-250, 1250);
+    axisY->setTickCount(7);  // Matches solar chart style
     powerChart->addAxis(axisY, Qt::AlignLeft);
     powerSeries->attachAxis(axisY);
 
+    // Zero line (styled to match)
     QLineSeries *zeroLine = new QLineSeries();
     zeroLine->append(0, 0);
     zeroLine->append(1440, 0);
-    zeroLine->setColor(Qt::gray);
-    zeroLine->setPen(QPen(Qt::gray, 1, Qt::DashLine));
+    zeroLine->setPen(QPen(QColor("#AAAAAA"), 1, Qt::DashLine));  // Light gray dashed
     powerChart->addSeries(zeroLine);
     zeroLine->attachAxis(axisX);
     zeroLine->attachAxis(axisY);
 
     powerChartView = new QChartView(powerChart);
     powerChartView->setRenderHint(QPainter::Antialiasing);
+    powerChartView->setStyleSheet("background-color: transparent;");  // Transparent background
 }

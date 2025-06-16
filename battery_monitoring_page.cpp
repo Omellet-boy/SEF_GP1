@@ -83,7 +83,7 @@ QGroupBox* BatteryMonitoringPage::createChargeControlGroup()
             color: white;
         }
         QProgressBar::chunk {
-            background-color: #FFD700;
+            background-color: #FFA500;
             border-radius: 8px;
         }
     )");
