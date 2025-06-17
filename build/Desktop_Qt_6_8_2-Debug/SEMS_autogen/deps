@@ -1,14 +1,17 @@
 SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QAbstractAxis \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QAbstractSeries \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QCategoryAxis \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QChart \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QChartGlobal \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QChartView \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QLegend \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QLineSeries \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QValueAxis \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/QXYSeries \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qabstractaxis.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qabstractseries.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qcategoryaxis.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qchart.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qchartglobal.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qchartview.h \
@@ -16,6 +19,7 @@ SEMS_autogen/timestamp: \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qlineseries.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qtcharts-config.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qtchartsexports.h \
+	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qvalueaxis.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCharts/qxyseries.h \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QDateTime \
 	/home/overlord/Qt/6.8.2/gcc_64/include/QtCore/QList \
@@ -596,6 +600,8 @@ SEMS_autogen/timestamp: \
 	/home/overlord/SEMS/settingwindow.h \
 	/home/overlord/SEMS/simulator.cpp \
 	/home/overlord/SEMS/simulator.h \
+	/home/overlord/SEMS/solar_monitoring_page.cpp \
+	/home/overlord/SEMS/solar_monitoring_page.h \
 	/usr/include/alloca.h \
 	/usr/include/asm-generic/errno-base.h \
 	/usr/include/asm-generic/errno.h \

@@ -5,3 +5,4 @@
 #include "EWIEGA46WW/moc_mainwindow.cpp"
 #include "EWIEGA46WW/moc_settingwindow.cpp"
 #include "EWIEGA46WW/moc_simulator.cpp"
+#include "EWIEGA46WW/moc_solar_monitoring_page.cpp"

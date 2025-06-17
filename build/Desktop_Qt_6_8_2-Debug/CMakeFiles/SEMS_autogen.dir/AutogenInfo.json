@@ -521,6 +521,12 @@
 			"MU",
 			"EWIEGA46WW/moc_simulator.cpp",
 			null
+		],
+		[
+			"/home/overlord/SEMS/solar_monitoring_page.h",
+			"MU",
+			"EWIEGA46WW/moc_solar_monitoring_page.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -600,7 +606,8 @@
 		[ "/home/overlord/SEMS/main.cpp", "MU", null ],
 		[ "/home/overlord/SEMS/mainwindow.cpp", "MU", null ],
 		[ "/home/overlord/SEMS/settingwindow.cpp", "MU", null ],
-		[ "/home/overlord/SEMS/simulator.cpp", "MU", null ]
+		[ "/home/overlord/SEMS/simulator.cpp", "MU", null ],
+		[ "/home/overlord/SEMS/solar_monitoring_page.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
